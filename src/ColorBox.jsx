@@ -21,13 +21,18 @@ export default function ColorBox({ colors }) {
 
         // Mark the box as clicked
         setIsClicked(true);
+
+        // Reset isClicked after animation ends
+        setTimeout(() => {
+            setIsClicked(false);
+        }, 1000);
     };
 
     return (
         <div style={{ backgroundColor: currentColor }}
             className="box"
             onClick={toggleColor}>
-            <p>{isClicked ? "Clicked" : "Click Me"}</p>
+            {isClicked && <p className="word-fade">POP!</p>}
         </div>
     );
 }
